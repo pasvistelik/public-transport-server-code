@@ -1,12 +1,11 @@
 {
   "name": "public-transport-server-code",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Module for running public-transport app on a server.",
   "main": "lib/server.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
-    "preinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel-version": "babel --version"
   },
