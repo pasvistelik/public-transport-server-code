@@ -1,0 +1,37 @@
+{
+  "name": "public-transport-server-code",
+  "version": "1.0.0",
+  "description": "Module for running public-transport app on a server.",
+  "main": "lib/server.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "preinstall": "npm run build",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pasvistelik/public-transport-server-code.git"
+  },
+  "author": "Andrey Pasvistelik",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-stage-2":"^6.24.1",
+    "babel-plugin-transform-regenerator":"^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "geo-coords-distance": "^2.0.1"
+  },
+  "dependencies": {
+    "public-transport-initialize-data": "https://github.com/pasvistelik/public-transport-initialize-data",
+    "public-transport-find-optimal-ways": "https://github.com/pasvistelik/public-transport-find-optimal-ways"
+  },
+  "bugs": {
+    "url": "https://github.com/pasvistelik/public-transport-server-code/issues"
+  },
+  "homepage": "https://github.com/pasvistelik/public-transport-server-code#readme"
+}
