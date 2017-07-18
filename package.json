@@ -1,6 +1,6 @@
 {
   "name": "public-transport-server-code",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Module for running public-transport app on a server.",
   "main": "lib/server.js",
   "scripts": {
@@ -24,12 +24,12 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-stage-2":"^6.24.1",
     "babel-plugin-transform-regenerator":"^6.24.1",
-    "babel-polyfill": "^6.23.0"
+    "babel-polyfill": "^6.23.0",
+    "geo-coords-distance":"^2.0.2"
   },
   "dependencies": {
     "public-transport-initialize-data": "https://github.com/pasvistelik/public-transport-initialize-data",
     "public-transport-find-optimal-ways": "https://github.com/pasvistelik/public-transport-find-optimal-ways",
-    "geo-coords-distance": "https://github.com/pasvistelik/geo-coords-distance"
   },
   "bugs": {
     "url": "https://github.com/pasvistelik/public-transport-server-code/issues"
