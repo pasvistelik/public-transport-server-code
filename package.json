@@ -2,7 +2,7 @@
   "name": "public-transport-server-code",
   "version": "1.0.2",
   "description": "Module for running public-transport app on a server.",
-  "main": "lib/server.js",
+  "main": "src/server.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
