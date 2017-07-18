@@ -4,7 +4,7 @@
   "description": "Module for running public-transport app on a server.",
   "main": "lib/server.js",
   "scripts": {
-    "build": "npm update && babel src --out-dir lib",
+    "build": "babel src --out-dir lib",
     "preinstall": "npm run build",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
