@@ -1,6 +1,6 @@
 {
   "name": "public-transport-server-code",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Module for running public-transport app on a server.",
   "main": "lib/server.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "babel-preset-stage-2":"^6.24.1",
     "babel-plugin-transform-regenerator":"^6.24.1",
     "babel-polyfill": "^6.23.0",
-    "geo-coords-distance":"^2.0.2"
+    "geo-coords-distance":"^2.0.5"
   },
   "dependencies": {
     "public-transport-initialize-data": "https://github.com/pasvistelik/public-transport-initialize-data",
