@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "public-transport-initialize-data": "https://github.com/pasvistelik/public-transport-initialize-data",
-    "public-transport-find-optimal-ways": "https://github.com/pasvistelik/public-transport-find-optimal-ways",
+    "public-transport-find-optimal-ways": "https://github.com/pasvistelik/public-transport-find-optimal-ways"
   },
   "bugs": {
     "url": "https://github.com/pasvistelik/public-transport-server-code/issues"
