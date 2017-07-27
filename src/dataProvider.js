@@ -41,7 +41,7 @@ export default class DataProvider {
         if(!DataProvider.loadingStarted){
             DataProvider.loadingStarted = true;
 
-            await loadDataOnly();
+            await DataProvider.loadDataOnly();
 
             if (DataProvider.allStationsLoaded && DataProvider.allRoutesLoaded && DataProvider.allTimetablesLoaded) {
                 initialize(DataProvider.allStations, DataProvider.allRoutes, DataProvider.allTimetables);
