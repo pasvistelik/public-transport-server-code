@@ -76,13 +76,14 @@ export default class DataProvider {
         if(!DataProvider.loadingStarted){
             DataProvider.loadingStarted = true;
 
-            let dbConnection = mysql.createConnection({
-                host     : AppConfig.databaseHost,
-                user     : AppConfig.databaseUser,
-                password : AppConfig.databasePassword,
-                database : AppConfig.databaseName
-            });
-            await TransportDatabase.useConnection(dbConnection);
+            await TransportDatabase.useConnection(
+                {
+                    host     : AppConfig.databaseHost,
+                    user     : AppConfig.databaseUser,
+                    password : AppConfig.databasePassword,
+                    database : AppConfig.databaseName
+                }
+            );
 
             await DataProvider.loadDataOnly();
 
