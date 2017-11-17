@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "grodno-transport-gps-positions-scraper": "git+https://github.com/pasvistelik/grodno-transport-gps-positions-scraper.git",
+    "mysql": "^2.15.0",
+    "public-transport-database": "git+https://github.com/pasvistelik/public-transport-database.git",
     "public-transport-find-optimal-ways": "git+https://github.com/pasvistelik/public-transport-find-optimal-ways.git",
     "public-transport-gps-positions-collector": "git+https://github.com/pasvistelik/public-transport-gps-positions-collector.git",
     "public-transport-initialize-data": "git+https://github.com/pasvistelik/public-transport-initialize-data.git"

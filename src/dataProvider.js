@@ -1,5 +1,8 @@
-import ApiConfig from './config';
+var AppConfig = null;
+import mysql from 'mysql';
 var fetch = require('node-fetch');
+
+import TransportDatabase from 'public-transport-database';
 import initialize from 'public-transport-initialize-data';
 
 import PositionsCollector from 'public-transport-gps-positions-collector';
@@ -7,6 +10,10 @@ import PositionsCollector from 'public-transport-gps-positions-collector';
 import GrodnoPositionsScraper from 'grodno-transport-gps-positions-scraper';
 
 export default class DataProvider {
+    static useConfig(config){
+        AppConfig = config;
+    }
+
     static allStations = null;
     static allRoutes = null;
     static allVehicles = null;
@@ -66,6 +73,14 @@ export default class DataProvider {
         if(!DataProvider.loadingStarted){
             DataProvider.loadingStarted = true;
 
+            let dbConnection = mysql.createConnection({
+                host     : AppConfig.databaseHost,
+                user     : AppConfig.databaseUser,
+                password : AppConfig.databasePassword,
+                database : AppConfig.databaseName
+            });
+            await TransportDatabase.useConnection(dbConnection);
+
             await DataProvider.loadDataOnly();
 
             if (DataProvider.allStationsLoaded && DataProvider.allRoutesLoaded && DataProvider.allTimetablesLoaded) {
@@ -83,7 +98,7 @@ export default class DataProvider {
         if(!DataProvider.allStationsLoaded){
             console.log("Downloading stations from server...");
 
-            let response = await fetch(ApiConfig.apiGetStationsUrl);
+            let response = await fetch(AppConfig.apiGetStationsUrl);
             DataProvider.allStationsJSON = await response.text();
             DataProvider.allStations = JSON.parse(DataProvider.allStationsJSON);
 
@@ -94,7 +109,7 @@ export default class DataProvider {
         if(!DataProvider.allRoutesLoaded){
             console.log("Downloading routes from server...");
 
-            let response = await fetch(ApiConfig.apiGetRoutesUrl);
+            let response = await fetch(AppConfig.apiGetRoutesUrl);
             DataProvider.allRoutesJSON = await response.text();
             DataProvider.allRoutes = JSON.parse(DataProvider.allRoutesJSON);
 
@@ -105,7 +120,7 @@ export default class DataProvider {
         if(!DataProvider.allTimetablesLoaded){
             console.log("Downloading timetables from server...");
 
-            let response = await fetch(ApiConfig.apiGetTimetablesUrl);
+            let response = await fetch(AppConfig.apiGetTimetablesUrl);
             DataProvider.allTimetablesJSON = await response.text();
             DataProvider.allTimetables = JSON.parse(DataProvider.allTimetablesJSON);
 

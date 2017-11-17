@@ -1,6 +1,5 @@
 ﻿import OptimalRoutesCollection from 'public-transport-find-optimal-ways/lib/optimalRoutesCollection';
 import DataProvider from './dataProvider';
-import ApiConfig from './config';
 
 
 
