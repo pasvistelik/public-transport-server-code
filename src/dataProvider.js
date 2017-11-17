@@ -138,11 +138,16 @@ export default class DataProvider {
 
 
 async function continueSavingPositionsToDatabase(){
-    if(!savingPositionsStarted) return;
+    //if(!savingPositionsStarted) return;
     
-    let tmpPositions = PositionsLocalArchive.ejectAll();
-    await TransportDatabase.pushPositionsInPositionsTable(tmpPositions);
-    console.log("Positions saved to database.");
+    try{
+        let tmpPositions = PositionsLocalArchive.ejectAll();
+        await TransportDatabase.pushPositionsInPositionsTable(tmpPositions);
+        console.log("Positions saved to database.");
+    }
+    catch(e){
+        console.log(e);
+    }
     
     setTimeout(continueSavingPositionsToDatabase, 10000);
 }
