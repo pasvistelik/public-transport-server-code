@@ -6,8 +6,11 @@ import TransportDatabase from 'public-transport-database';
 import initialize from 'public-transport-initialize-data';
 
 import PositionsCollector from 'public-transport-gps-positions-collector';
+import PositionsLocalArchive from 'public-transport-gps-positions-collector/lib/positionsLocalArchive';
 
 import GrodnoPositionsScraper from 'grodno-transport-gps-positions-scraper';
+
+var savingPositionsStarted = false;
 
 export default class DataProvider {
     static useConfig(config){
@@ -91,6 +94,9 @@ export default class DataProvider {
 
                 DataProvider.allVehicles = PositionsCollector.vehicles;
             }
+
+            savingPositionsStarted = true;
+            continueSavingPositionsToDatabase();
         }
     }
     static async loadDataOnly() {
@@ -128,4 +134,15 @@ export default class DataProvider {
             console.log("Timetables loaded from server.");
         }
     }
+}
+
+
+async function continueSavingPositionsToDatabase(){
+    if(!savingPositionsStarted) return;
+    
+    let tmpPositions = PositionsLocalArchive.ejectAll();
+    await TransportDatabase.pushPositionsInPositionsTable(tmpPositions);
+    console.log("Positions saved to database.");
+    
+    setTimeout(continueSavingPositionsToDatabase, 10000);
 }
