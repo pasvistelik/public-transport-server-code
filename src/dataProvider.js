@@ -137,15 +137,19 @@ export default class DataProvider {
     }
 }
 
-
+var positionsForSave = []
 async function continueSavingPositionsToDatabase(){
     //if(!savingPositionsStarted) return;
     
     try{
         let tmpPositions = PositionsLocalArchive.ejectAll();
         if(tmpPositions != null) {
+            positionsForSave = positionsForSave.concat(tmpPositions);
+        }
+        if(positionsForSave.length !== 0) {
             await TransportDatabase.pushPositionsInPositionsTable(tmpPositions);
             console.log("Positions ("+tmpPositions.length+" points) saved to database.");
+            positionsForSave = [];
         }
     }
     catch(e){
