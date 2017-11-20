@@ -143,8 +143,10 @@ async function continueSavingPositionsToDatabase(){
     
     try{
         let tmpPositions = PositionsLocalArchive.ejectAll();
-        await TransportDatabase.pushPositionsInPositionsTable(tmpPositions);
-        console.log("Positions saved to database.");
+        if(tmpPositions != null) {
+            await TransportDatabase.pushPositionsInPositionsTable(tmpPositions);
+            console.log("Positions ("+tmpPositions.length+" points) saved to database.");
+        }
     }
     catch(e){
         console.log(e);
