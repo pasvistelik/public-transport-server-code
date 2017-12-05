@@ -11,7 +11,7 @@ class AppServer {
         var minimalGoingTimeSeconds = 0;
         var minimalTransportChangingCount = 0;
         try { 
-            findedOptimalWays = await getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my_dopTimeMinutes, my_speed, typesStr);
+            findedOptimalWays = await getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my_dopTimeMinutes, my_speed, typesStr, oneWayOnly);
         } finally{
             if (findedOptimalWays != null && findedOptimalWays.length !== 0) {
 
@@ -47,7 +47,7 @@ function strToSeconds(str) {
     else return undefined;
 }
 
-async function getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my_dopTimeMinutes, my_speed, typesStr) {
+async function getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my_dopTimeMinutes, my_speed, typesStr, oneWayOnly) {
     console.log("Start counting...");
 
     var startOptimalRoutePoint = strToCoords(fromPositionStr);
@@ -68,7 +68,8 @@ async function getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my
         startTime: myStartTime,
         transportTypes: types,
         goingSpeed: parseFloat(my_speed), 
-        dopTimeMinutes: parseFloat(my_dopTimeMinutes)
+        dopTimeMinutes: parseFloat(my_dopTimeMinutes),
+        oneWayOnly: oneWayOnly
     };
     
     await DataProvider.loadDataAndInitialize();
@@ -79,7 +80,8 @@ async function getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my
         params.startTime,
         params.transportTypes,
         params.goingSpeed,
-        params.dopTimeMinutes
+        params.dopTimeMinutes,
+        params.oneWayOnly
     );
     console.log(res);
     var findedOptimalWays = res.getOptimalWays();
