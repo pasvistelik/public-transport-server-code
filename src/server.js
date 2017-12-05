@@ -5,7 +5,7 @@ import DataProvider from './dataProvider';
 
 class AppServer {    
     // Find optimal ways between two points. The start time, reserved time, going speed and transport types are known.
-    static async findWays(fromPositionStr, toPositionStr, myStartTimeStr, my_dopTimeMinutes, my_speed, typesStr) {
+    static async findWays(fromPositionStr, toPositionStr, myStartTimeStr, my_dopTimeMinutes, my_speed, typesStr, oneWayOnly) {
         var findedOptimalWays = null;
         var minimalTimeSeconds = 0;
         var minimalGoingTimeSeconds = 0;
@@ -85,10 +85,10 @@ async function getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my
     );
     console.log(res);
     var findedOptimalWays = res.getOptimalWays();
-    console.log(findedOptimalWays);
+    //console.log(findedOptimalWays);
 
     
-    console.log("Finded " + findedOptimalWays.length + " optimal routes. Time = " + (Date.now() - startInitializingMoment) + " ms.");
+    if(findedOptimalWays != null) console.log("Finded " + findedOptimalWays.length + " optimal routes. Time = " + (Date.now() - startInitializingMoment) + " ms.");
 
     return findedOptimalWays;
 }
