@@ -48,7 +48,7 @@ function strToSeconds(str) {
 }
 
 async function getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my_dopTimeMinutes, my_speed, typesStr, oneWayOnly) {
-    console.log("Start counting...");
+    //console.log("Start counting...");
 
     var startOptimalRoutePoint = strToCoords(fromPositionStr);
     var finalOptimalRoutePoint = strToCoords(toPositionStr);
@@ -83,12 +83,12 @@ async function getCountedWays(fromPositionStr, toPositionStr, myStartTimeStr, my
         params.dopTimeMinutes,
         params.oneWayOnly
     );
-    console.log(res);
+    //console.log(res);
     var findedOptimalWays = res.getOptimalWays();
     //console.log(findedOptimalWays);
 
     
-    if(findedOptimalWays != null) console.log("Finded " + findedOptimalWays.length + " optimal routes. Time = " + (Date.now() - startInitializingMoment) + " ms.");
+    //if(findedOptimalWays != null) console.log("Finded " + findedOptimalWays.length + " optimal routes. Time = " + (Date.now() - startInitializingMoment) + " ms.");
 
     return findedOptimalWays;
 }
